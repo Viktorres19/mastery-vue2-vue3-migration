@@ -1,20 +1,30 @@
 <template>
   <div class="home">
-    <InputComp v-model:modelValue="myInput" />
+    <SalutationName
+      v-model:salutation="form.salutation"
+      v-model:name="form.name"
+    />
+    <pre>{{ form }}</pre>
   </div>
 </template>
 
 <script>
-import InputComp from "@/components/InputComp.vue";
+import { reactive } from 'vue'
+import SalutationName from '@/components/SalutationName.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    InputComp
+    SalutationName
   },
-  data() {
+  setup () {
+    const form = reactive({
+      salutation: '',
+      name: ''
+    })
+
     return {
-      myInput: ''
+      form
     }
   }
 }
