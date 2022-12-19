@@ -1,30 +1,30 @@
 <template>
   <div class="home">
-    <SalutationName
-      v-model:salutation.capitalize="form.salutation"
-      v-model:name.capitaze="form.name"
+    <BaseInput
+      v-model="email"
+      @blur="email = 'blurrr@its.cold'"
+      label="Email:"
+      type="email"
     />
-    <pre>{{ form }}</pre>
+
+    <pre>{{ email }}</pre>
   </div>
 </template>
 
 <script>
-import { reactive } from 'vue'
-import SalutationName from '@/components/SalutationName.vue'
+import { ref } from 'vue'
+import BaseInput from '@/components/BaseInput'
 
 export default {
   name: 'HomeView',
   components: {
-    SalutationName
+    BaseInput
   },
   setup () {
-    const form = reactive({
-      salutation: '',
-      name: ''
-    })
+    const email = ref('')
 
     return {
-      form
+      email
     }
   }
 }
